@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedShellRouteImport } from './routes/_authenticated/_shell'
 import { Route as AuthenticatedShellIndexRouteImport } from './routes/_authenticated/_shell.index'
 import { Route as AuthenticatedShellSettingsRouteImport } from './routes/_authenticated/_shell.settings'
@@ -18,9 +20,18 @@ import { Route as AuthenticatedShellMeetingRouteImport } from './routes/_authent
 import { Route as AuthenticatedShellEmailRouteImport } from './routes/_authenticated/_shell.email'
 import { Route as AuthenticatedShellChatRouteImport } from './routes/_authenticated/_shell.chat'
 
-const AuthenticatedShellRoute = AuthenticatedShellRouteImport.update({
-  id: '/_authenticated/_shell',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedShellRoute = AuthenticatedShellRouteImport.update({
+  id: '/_shell',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedShellIndexRoute = AuthenticatedShellIndexRouteImport.update({
   id: '/',
@@ -64,6 +75,7 @@ const AuthenticatedShellChatRoute = AuthenticatedShellChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedShellIndexRoute
+  '/auth': typeof AuthRoute
   '/chat': typeof AuthenticatedShellChatRoute
   '/email': typeof AuthenticatedShellEmailRoute
   '/meeting': typeof AuthenticatedShellMeetingRoute
@@ -72,16 +84,19 @@ export interface FileRoutesByFullPath {
   '/settings': typeof AuthenticatedShellSettingsRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof AuthenticatedShellIndexRoute
+  '/auth': typeof AuthRoute
   '/chat': typeof AuthenticatedShellChatRoute
   '/email': typeof AuthenticatedShellEmailRoute
   '/meeting': typeof AuthenticatedShellMeetingRoute
   '/planner': typeof AuthenticatedShellPlannerRoute
   '/research': typeof AuthenticatedShellResearchRoute
   '/settings': typeof AuthenticatedShellSettingsRoute
-  '/': typeof AuthenticatedShellIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/_authenticated/_shell': typeof AuthenticatedShellRouteWithChildren
   '/_authenticated/_shell/chat': typeof AuthenticatedShellChatRoute
   '/_authenticated/_shell/email': typeof AuthenticatedShellEmailRoute
@@ -95,6 +110,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/chat'
     | '/email'
     | '/meeting'
@@ -103,15 +119,18 @@ export interface FileRouteTypes {
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
+    | '/auth'
     | '/chat'
     | '/email'
     | '/meeting'
     | '/planner'
     | '/research'
     | '/settings'
-    | '/'
   id:
     | '__root__'
+    | '/_authenticated'
+    | '/auth'
     | '/_authenticated/_shell'
     | '/_authenticated/_shell/chat'
     | '/_authenticated/_shell/email'
@@ -123,17 +142,32 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AuthenticatedShellRoute: typeof AuthenticatedShellRouteWithChildren
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/_shell': {
       id: '/_authenticated/_shell'
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedShellRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/_shell/': {
       id: '/_authenticated/_shell/'
@@ -210,8 +244,20 @@ const AuthenticatedShellRouteChildren: AuthenticatedShellRouteChildren = {
 const AuthenticatedShellRouteWithChildren =
   AuthenticatedShellRoute._addFileChildren(AuthenticatedShellRouteChildren)
 
-const rootRouteChildren: RootRouteChildren = {
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedShellRoute: typeof AuthenticatedShellRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedShellRoute: AuthenticatedShellRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+const rootRouteChildren: RootRouteChildren = {
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
