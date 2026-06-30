@@ -98,6 +98,18 @@ export function AppSidebar() {
 
       <div className="px-3 py-3 border-t border-sidebar-border space-y-1">
         <Link
+          to="/profile"
+          className={cn(
+            "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all",
+            pathname === "/profile"
+              ? "text-foreground bg-sidebar-accent"
+              : "text-muted-foreground hover:text-foreground hover:bg-sidebar-accent/60",
+          )}
+        >
+          <UserCircle className="h-4 w-4 shrink-0" />
+          Profile
+        </Link>
+        <Link
           to="/settings"
           className={cn(
             "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all",
