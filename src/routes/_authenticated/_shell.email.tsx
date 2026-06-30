@@ -16,7 +16,7 @@ import {
 import { mockEmail } from "@/lib/mock-ai";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/_layout/email")({
+export const Route = createFileRoute("/_authenticated/_shell/email")({
   head: () => ({
     meta: [
       { title: "AI Email Generator — Lovable AI" },

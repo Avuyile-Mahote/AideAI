@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 
-export const Route = createFileRoute("/_layout/")({
+export const Route = createFileRoute("/_authenticated/_shell/")({
   head: () => ({
     meta: [
       { title: "Dashboard — AI Workplace Productivity" },

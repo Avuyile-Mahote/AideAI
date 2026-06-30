@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { mockChat } from "@/lib/mock-ai";
 
-export const Route = createFileRoute("/_layout/chat")({
+export const Route = createFileRoute("/_authenticated/_shell/chat")({
   head: () => ({
     meta: [
       { title: "AI Chatbot — Lovable AI" },

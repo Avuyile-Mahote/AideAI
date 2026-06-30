@@ -2,7 +2,7 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { AppSidebar, MobileNav } from "@/components/AppSidebar";
 import { Toaster } from "@/components/ui/sonner";
 
-export const Route = createFileRoute("/_layout")({
+export const Route = createFileRoute("/_authenticated/_shell")({
   component: LayoutShell,
 });
 
