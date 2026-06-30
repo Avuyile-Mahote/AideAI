@@ -15,6 +15,7 @@ import { Route as AuthenticatedShellRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedShellIndexRouteImport } from './routes/_authenticated/_shell.index'
 import { Route as AuthenticatedShellSettingsRouteImport } from './routes/_authenticated/_shell.settings'
 import { Route as AuthenticatedShellResearchRouteImport } from './routes/_authenticated/_shell.research'
+import { Route as AuthenticatedShellProfileRouteImport } from './routes/_authenticated/_shell.profile'
 import { Route as AuthenticatedShellPlannerRouteImport } from './routes/_authenticated/_shell.planner'
 import { Route as AuthenticatedShellMeetingRouteImport } from './routes/_authenticated/_shell.meeting'
 import { Route as AuthenticatedShellEmailRouteImport } from './routes/_authenticated/_shell.email'
@@ -50,6 +51,12 @@ const AuthenticatedShellResearchRoute =
     path: '/research',
     getParentRoute: () => AuthenticatedShellRoute,
   } as any)
+const AuthenticatedShellProfileRoute =
+  AuthenticatedShellProfileRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => AuthenticatedShellRoute,
+  } as any)
 const AuthenticatedShellPlannerRoute =
   AuthenticatedShellPlannerRouteImport.update({
     id: '/planner',
@@ -80,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/email': typeof AuthenticatedShellEmailRoute
   '/meeting': typeof AuthenticatedShellMeetingRoute
   '/planner': typeof AuthenticatedShellPlannerRoute
+  '/profile': typeof AuthenticatedShellProfileRoute
   '/research': typeof AuthenticatedShellResearchRoute
   '/settings': typeof AuthenticatedShellSettingsRoute
 }
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
   '/email': typeof AuthenticatedShellEmailRoute
   '/meeting': typeof AuthenticatedShellMeetingRoute
   '/planner': typeof AuthenticatedShellPlannerRoute
+  '/profile': typeof AuthenticatedShellProfileRoute
   '/research': typeof AuthenticatedShellResearchRoute
   '/settings': typeof AuthenticatedShellSettingsRoute
 }
@@ -102,6 +111,7 @@ export interface FileRoutesById {
   '/_authenticated/_shell/email': typeof AuthenticatedShellEmailRoute
   '/_authenticated/_shell/meeting': typeof AuthenticatedShellMeetingRoute
   '/_authenticated/_shell/planner': typeof AuthenticatedShellPlannerRoute
+  '/_authenticated/_shell/profile': typeof AuthenticatedShellProfileRoute
   '/_authenticated/_shell/research': typeof AuthenticatedShellResearchRoute
   '/_authenticated/_shell/settings': typeof AuthenticatedShellSettingsRoute
   '/_authenticated/_shell/': typeof AuthenticatedShellIndexRoute
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
     | '/email'
     | '/meeting'
     | '/planner'
+    | '/profile'
     | '/research'
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
     | '/email'
     | '/meeting'
     | '/planner'
+    | '/profile'
     | '/research'
     | '/settings'
   id:
@@ -136,6 +148,7 @@ export interface FileRouteTypes {
     | '/_authenticated/_shell/email'
     | '/_authenticated/_shell/meeting'
     | '/_authenticated/_shell/planner'
+    | '/_authenticated/_shell/profile'
     | '/_authenticated/_shell/research'
     | '/_authenticated/_shell/settings'
     | '/_authenticated/_shell/'
@@ -190,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedShellResearchRouteImport
       parentRoute: typeof AuthenticatedShellRoute
     }
+    '/_authenticated/_shell/profile': {
+      id: '/_authenticated/_shell/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedShellProfileRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
+    }
     '/_authenticated/_shell/planner': {
       id: '/_authenticated/_shell/planner'
       path: '/planner'
@@ -226,6 +246,7 @@ interface AuthenticatedShellRouteChildren {
   AuthenticatedShellEmailRoute: typeof AuthenticatedShellEmailRoute
   AuthenticatedShellMeetingRoute: typeof AuthenticatedShellMeetingRoute
   AuthenticatedShellPlannerRoute: typeof AuthenticatedShellPlannerRoute
+  AuthenticatedShellProfileRoute: typeof AuthenticatedShellProfileRoute
   AuthenticatedShellResearchRoute: typeof AuthenticatedShellResearchRoute
   AuthenticatedShellSettingsRoute: typeof AuthenticatedShellSettingsRoute
   AuthenticatedShellIndexRoute: typeof AuthenticatedShellIndexRoute
@@ -236,6 +257,7 @@ const AuthenticatedShellRouteChildren: AuthenticatedShellRouteChildren = {
   AuthenticatedShellEmailRoute: AuthenticatedShellEmailRoute,
   AuthenticatedShellMeetingRoute: AuthenticatedShellMeetingRoute,
   AuthenticatedShellPlannerRoute: AuthenticatedShellPlannerRoute,
+  AuthenticatedShellProfileRoute: AuthenticatedShellProfileRoute,
   AuthenticatedShellResearchRoute: AuthenticatedShellResearchRoute,
   AuthenticatedShellSettingsRoute: AuthenticatedShellSettingsRoute,
   AuthenticatedShellIndexRoute: AuthenticatedShellIndexRoute,
