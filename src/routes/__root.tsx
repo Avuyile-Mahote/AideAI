@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "synapsis-aide" },
+      { name: "description", content: "Aura Assist is an AI-powered web application designed to enhance workplace productivity." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "synapsis-aide" },
+      { property: "og:description", content: "Aura Assist is an AI-powered web application designed to enhance workplace productivity." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "synapsis-aide" },
+      { name: "twitter:description", content: "Aura Assist is an AI-powered web application designed to enhance workplace productivity." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3418c87-2321-41d6-b44c-cf2c172bdbac/id-preview-b218c74d--7ed8efef-b05e-433a-9635-891db71e78cc.lovable.app-1782834175831.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3418c87-2321-41d6-b44c-cf2c172bdbac/id-preview-b218c74d--7ed8efef-b05e-433a-9635-891db71e78cc.lovable.app-1782834175831.png" },
     ],
     links: [
       {
