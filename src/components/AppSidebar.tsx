@@ -8,6 +8,7 @@ import {
   Bot,
   Settings,
   Sparkles,
+  UserCircle,
   LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
