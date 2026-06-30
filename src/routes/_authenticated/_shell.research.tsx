@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { mockResearch } from "@/lib/mock-ai";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/_layout/research")({
+export const Route = createFileRoute("/_authenticated/_shell/research")({
   head: () => ({
     meta: [
       { title: "AI Research Assistant — Lovable AI" },

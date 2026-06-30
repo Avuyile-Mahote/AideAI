@@ -9,83 +9,87 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as LayoutRouteImport } from './routes/_layout'
-import { Route as LayoutIndexRouteImport } from './routes/_layout.index'
-import { Route as LayoutSettingsRouteImport } from './routes/_layout.settings'
-import { Route as LayoutResearchRouteImport } from './routes/_layout.research'
-import { Route as LayoutPlannerRouteImport } from './routes/_layout.planner'
-import { Route as LayoutMeetingRouteImport } from './routes/_layout.meeting'
-import { Route as LayoutEmailRouteImport } from './routes/_layout.email'
-import { Route as LayoutChatRouteImport } from './routes/_layout.chat'
+import { Route as AuthenticatedShellRouteImport } from './routes/_authenticated/_shell'
+import { Route as AuthenticatedShellIndexRouteImport } from './routes/_authenticated/_shell.index'
+import { Route as AuthenticatedShellSettingsRouteImport } from './routes/_authenticated/_shell.settings'
+import { Route as AuthenticatedShellResearchRouteImport } from './routes/_authenticated/_shell.research'
+import { Route as AuthenticatedShellPlannerRouteImport } from './routes/_authenticated/_shell.planner'
+import { Route as AuthenticatedShellMeetingRouteImport } from './routes/_authenticated/_shell.meeting'
+import { Route as AuthenticatedShellEmailRouteImport } from './routes/_authenticated/_shell.email'
+import { Route as AuthenticatedShellChatRouteImport } from './routes/_authenticated/_shell.chat'
 
-const LayoutRoute = LayoutRouteImport.update({
-  id: '/_layout',
+const AuthenticatedShellRoute = AuthenticatedShellRouteImport.update({
+  id: '/_authenticated/_shell',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LayoutIndexRoute = LayoutIndexRouteImport.update({
+const AuthenticatedShellIndexRoute = AuthenticatedShellIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => LayoutRoute,
+  getParentRoute: () => AuthenticatedShellRoute,
 } as any)
-const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => LayoutRoute,
-} as any)
-const LayoutResearchRoute = LayoutResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
-  getParentRoute: () => LayoutRoute,
-} as any)
-const LayoutPlannerRoute = LayoutPlannerRouteImport.update({
-  id: '/planner',
-  path: '/planner',
-  getParentRoute: () => LayoutRoute,
-} as any)
-const LayoutMeetingRoute = LayoutMeetingRouteImport.update({
-  id: '/meeting',
-  path: '/meeting',
-  getParentRoute: () => LayoutRoute,
-} as any)
-const LayoutEmailRoute = LayoutEmailRouteImport.update({
+const AuthenticatedShellSettingsRoute =
+  AuthenticatedShellSettingsRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedShellRoute,
+  } as any)
+const AuthenticatedShellResearchRoute =
+  AuthenticatedShellResearchRouteImport.update({
+    id: '/research',
+    path: '/research',
+    getParentRoute: () => AuthenticatedShellRoute,
+  } as any)
+const AuthenticatedShellPlannerRoute =
+  AuthenticatedShellPlannerRouteImport.update({
+    id: '/planner',
+    path: '/planner',
+    getParentRoute: () => AuthenticatedShellRoute,
+  } as any)
+const AuthenticatedShellMeetingRoute =
+  AuthenticatedShellMeetingRouteImport.update({
+    id: '/meeting',
+    path: '/meeting',
+    getParentRoute: () => AuthenticatedShellRoute,
+  } as any)
+const AuthenticatedShellEmailRoute = AuthenticatedShellEmailRouteImport.update({
   id: '/email',
   path: '/email',
-  getParentRoute: () => LayoutRoute,
+  getParentRoute: () => AuthenticatedShellRoute,
 } as any)
-const LayoutChatRoute = LayoutChatRouteImport.update({
+const AuthenticatedShellChatRoute = AuthenticatedShellChatRouteImport.update({
   id: '/chat',
   path: '/chat',
-  getParentRoute: () => LayoutRoute,
+  getParentRoute: () => AuthenticatedShellRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof LayoutIndexRoute
-  '/chat': typeof LayoutChatRoute
-  '/email': typeof LayoutEmailRoute
-  '/meeting': typeof LayoutMeetingRoute
-  '/planner': typeof LayoutPlannerRoute
-  '/research': typeof LayoutResearchRoute
-  '/settings': typeof LayoutSettingsRoute
+  '/': typeof AuthenticatedShellIndexRoute
+  '/chat': typeof AuthenticatedShellChatRoute
+  '/email': typeof AuthenticatedShellEmailRoute
+  '/meeting': typeof AuthenticatedShellMeetingRoute
+  '/planner': typeof AuthenticatedShellPlannerRoute
+  '/research': typeof AuthenticatedShellResearchRoute
+  '/settings': typeof AuthenticatedShellSettingsRoute
 }
 export interface FileRoutesByTo {
-  '/chat': typeof LayoutChatRoute
-  '/email': typeof LayoutEmailRoute
-  '/meeting': typeof LayoutMeetingRoute
-  '/planner': typeof LayoutPlannerRoute
-  '/research': typeof LayoutResearchRoute
-  '/settings': typeof LayoutSettingsRoute
-  '/': typeof LayoutIndexRoute
+  '/chat': typeof AuthenticatedShellChatRoute
+  '/email': typeof AuthenticatedShellEmailRoute
+  '/meeting': typeof AuthenticatedShellMeetingRoute
+  '/planner': typeof AuthenticatedShellPlannerRoute
+  '/research': typeof AuthenticatedShellResearchRoute
+  '/settings': typeof AuthenticatedShellSettingsRoute
+  '/': typeof AuthenticatedShellIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_layout': typeof LayoutRouteWithChildren
-  '/_layout/chat': typeof LayoutChatRoute
-  '/_layout/email': typeof LayoutEmailRoute
-  '/_layout/meeting': typeof LayoutMeetingRoute
-  '/_layout/planner': typeof LayoutPlannerRoute
-  '/_layout/research': typeof LayoutResearchRoute
-  '/_layout/settings': typeof LayoutSettingsRoute
-  '/_layout/': typeof LayoutIndexRoute
+  '/_authenticated/_shell': typeof AuthenticatedShellRouteWithChildren
+  '/_authenticated/_shell/chat': typeof AuthenticatedShellChatRoute
+  '/_authenticated/_shell/email': typeof AuthenticatedShellEmailRoute
+  '/_authenticated/_shell/meeting': typeof AuthenticatedShellMeetingRoute
+  '/_authenticated/_shell/planner': typeof AuthenticatedShellPlannerRoute
+  '/_authenticated/_shell/research': typeof AuthenticatedShellResearchRoute
+  '/_authenticated/_shell/settings': typeof AuthenticatedShellSettingsRoute
+  '/_authenticated/_shell/': typeof AuthenticatedShellIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -108,106 +112,106 @@ export interface FileRouteTypes {
     | '/'
   id:
     | '__root__'
-    | '/_layout'
-    | '/_layout/chat'
-    | '/_layout/email'
-    | '/_layout/meeting'
-    | '/_layout/planner'
-    | '/_layout/research'
-    | '/_layout/settings'
-    | '/_layout/'
+    | '/_authenticated/_shell'
+    | '/_authenticated/_shell/chat'
+    | '/_authenticated/_shell/email'
+    | '/_authenticated/_shell/meeting'
+    | '/_authenticated/_shell/planner'
+    | '/_authenticated/_shell/research'
+    | '/_authenticated/_shell/settings'
+    | '/_authenticated/_shell/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  LayoutRoute: typeof LayoutRouteWithChildren
+  AuthenticatedShellRoute: typeof AuthenticatedShellRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_layout': {
-      id: '/_layout'
+    '/_authenticated/_shell': {
+      id: '/_authenticated/_shell'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof LayoutRouteImport
+      preLoaderRoute: typeof AuthenticatedShellRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_layout/': {
-      id: '/_layout/'
+    '/_authenticated/_shell/': {
+      id: '/_authenticated/_shell/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof LayoutIndexRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellIndexRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
-    '/_layout/settings': {
-      id: '/_layout/settings'
+    '/_authenticated/_shell/settings': {
+      id: '/_authenticated/_shell/settings'
       path: '/settings'
       fullPath: '/settings'
-      preLoaderRoute: typeof LayoutSettingsRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellSettingsRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
-    '/_layout/research': {
-      id: '/_layout/research'
+    '/_authenticated/_shell/research': {
+      id: '/_authenticated/_shell/research'
       path: '/research'
       fullPath: '/research'
-      preLoaderRoute: typeof LayoutResearchRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellResearchRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
-    '/_layout/planner': {
-      id: '/_layout/planner'
+    '/_authenticated/_shell/planner': {
+      id: '/_authenticated/_shell/planner'
       path: '/planner'
       fullPath: '/planner'
-      preLoaderRoute: typeof LayoutPlannerRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellPlannerRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
-    '/_layout/meeting': {
-      id: '/_layout/meeting'
+    '/_authenticated/_shell/meeting': {
+      id: '/_authenticated/_shell/meeting'
       path: '/meeting'
       fullPath: '/meeting'
-      preLoaderRoute: typeof LayoutMeetingRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellMeetingRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
-    '/_layout/email': {
-      id: '/_layout/email'
+    '/_authenticated/_shell/email': {
+      id: '/_authenticated/_shell/email'
       path: '/email'
       fullPath: '/email'
-      preLoaderRoute: typeof LayoutEmailRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellEmailRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
-    '/_layout/chat': {
-      id: '/_layout/chat'
+    '/_authenticated/_shell/chat': {
+      id: '/_authenticated/_shell/chat'
       path: '/chat'
       fullPath: '/chat'
-      preLoaderRoute: typeof LayoutChatRouteImport
-      parentRoute: typeof LayoutRoute
+      preLoaderRoute: typeof AuthenticatedShellChatRouteImport
+      parentRoute: typeof AuthenticatedShellRoute
     }
   }
 }
 
-interface LayoutRouteChildren {
-  LayoutChatRoute: typeof LayoutChatRoute
-  LayoutEmailRoute: typeof LayoutEmailRoute
-  LayoutMeetingRoute: typeof LayoutMeetingRoute
-  LayoutPlannerRoute: typeof LayoutPlannerRoute
-  LayoutResearchRoute: typeof LayoutResearchRoute
-  LayoutSettingsRoute: typeof LayoutSettingsRoute
-  LayoutIndexRoute: typeof LayoutIndexRoute
+interface AuthenticatedShellRouteChildren {
+  AuthenticatedShellChatRoute: typeof AuthenticatedShellChatRoute
+  AuthenticatedShellEmailRoute: typeof AuthenticatedShellEmailRoute
+  AuthenticatedShellMeetingRoute: typeof AuthenticatedShellMeetingRoute
+  AuthenticatedShellPlannerRoute: typeof AuthenticatedShellPlannerRoute
+  AuthenticatedShellResearchRoute: typeof AuthenticatedShellResearchRoute
+  AuthenticatedShellSettingsRoute: typeof AuthenticatedShellSettingsRoute
+  AuthenticatedShellIndexRoute: typeof AuthenticatedShellIndexRoute
 }
 
-const LayoutRouteChildren: LayoutRouteChildren = {
-  LayoutChatRoute: LayoutChatRoute,
-  LayoutEmailRoute: LayoutEmailRoute,
-  LayoutMeetingRoute: LayoutMeetingRoute,
-  LayoutPlannerRoute: LayoutPlannerRoute,
-  LayoutResearchRoute: LayoutResearchRoute,
-  LayoutSettingsRoute: LayoutSettingsRoute,
-  LayoutIndexRoute: LayoutIndexRoute,
+const AuthenticatedShellRouteChildren: AuthenticatedShellRouteChildren = {
+  AuthenticatedShellChatRoute: AuthenticatedShellChatRoute,
+  AuthenticatedShellEmailRoute: AuthenticatedShellEmailRoute,
+  AuthenticatedShellMeetingRoute: AuthenticatedShellMeetingRoute,
+  AuthenticatedShellPlannerRoute: AuthenticatedShellPlannerRoute,
+  AuthenticatedShellResearchRoute: AuthenticatedShellResearchRoute,
+  AuthenticatedShellSettingsRoute: AuthenticatedShellSettingsRoute,
+  AuthenticatedShellIndexRoute: AuthenticatedShellIndexRoute,
 }
 
-const LayoutRouteWithChildren =
-  LayoutRoute._addFileChildren(LayoutRouteChildren)
+const AuthenticatedShellRouteWithChildren =
+  AuthenticatedShellRoute._addFileChildren(AuthenticatedShellRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  LayoutRoute: LayoutRouteWithChildren,
+  AuthenticatedShellRoute: AuthenticatedShellRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

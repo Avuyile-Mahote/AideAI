@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/_layout/settings")({
+export const Route = createFileRoute("/_authenticated/_shell/settings")({
   head: () => ({
     meta: [{ title: "Settings — Lovable AI" }],
   }),

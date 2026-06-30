@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { mockSummarize } from "@/lib/mock-ai";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/_layout/meeting")({
+export const Route = createFileRoute("/_authenticated/_shell/meeting")({
   head: () => ({
     meta: [
       { title: "Meeting Notes Summarizer — Lovable AI" },

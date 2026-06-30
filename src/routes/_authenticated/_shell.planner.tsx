@@ -10,7 +10,7 @@ import { Progress } from "@/components/ui/progress";
 import { mockPlan } from "@/lib/mock-ai";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/_layout/planner")({
+export const Route = createFileRoute("/_authenticated/_shell/planner")({
   head: () => ({
     meta: [
       { title: "AI Task Planner — Lovable AI" },
